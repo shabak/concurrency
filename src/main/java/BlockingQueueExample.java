@@ -26,7 +26,7 @@ public class BlockingQueueExample {
         private BlockingQueue<String> drop;
 
         public Producer(BlockingQueue<String> d) {
-            this.drop = d;
+            drop = d;
         }
 
         public void run() {
@@ -36,8 +36,7 @@ public class BlockingQueueExample {
                 }
                 drop.put("DONE");
             } catch (InterruptedException intEx) {
-                System.out.println("Interrupted! " +
-                                   "Last one out, turn out the lights!");
+                System.out.println("Interrupted! " + "Last one out, turn out the lights!");
             }
         }
     }
@@ -46,12 +45,12 @@ public class BlockingQueueExample {
         private BlockingQueue<String> drop;
 
         public Consumer(BlockingQueue<String> d) {
-            this.drop = d;
+            drop = d;
         }
 
         public void run() {
             try {
-                String msg = null;
+                String msg;
                 while (!((msg = drop.take()).equals("DONE"))) {
                     System.out.println(msg);
                 }
